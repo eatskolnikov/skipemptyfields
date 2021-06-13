@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Single form</title>
+    </head>
+
+    <body>
+        <h2>Normal form</h2>
+        <form method="GET">
+            Input 1
+            <input type="text" name="text1" /><br/>
+            Input 2
+            <input type="text" name="text2" /><br/>
+            Input 3
+            <input type="text" name="text3" /><br/>
+            Combobox
+            <select name="combobox1">
+                <option value=""></option>
+                <option value="One">One</option>
+                <option value="Two">Two</option>
+                <option value="Tree">Tree</option>
+            </select><br/>
+            <input type="submit" />
+        </form>
+
+        <h2>Form with empty fields skipped</h2>
+        <form method="GET" class="skipFieldsForm">
+            Input 1
+            <input type="text" name="text1" /><br/>
+            Input 2
+            <input type="text" name="text2" /><br/>
+            Input 3
+            <input type="text" name="text3" /><br/>
+            Combobox
+            <select name="combobox1">
+                <option value=""></option>
+                <option value="One">One</option>
+                <option value="Two">Two</option>
+                <option value="Tree">Tree</option>
+            </select><br/>
+            <input type="submit" />
+        </form>
+    </body>
+    <script src="../src/skipEmptyFieldsSubmission.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    window.addEventListener('load', (event) => {
+        skipEmptyFieldsSubmission("skipFieldsForm");
+    });
+    </script>
+</html>
