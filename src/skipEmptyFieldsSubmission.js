@@ -1,46 +1,48 @@
-var skipEmptyFieldsSubmission = function(formClass)
-{
+var skipEmptyFieldsSubmission = function(formClass) {
     var forms = document.getElementsByClassName(formClass);
-    for(var i=0;i<forms.length;++i)
-    {
-        var form = forms[i];
-        var inputs = form.getElementsByTagName("input");
-        for(var j=0;j<inputs.length;++j)
-        {
-            var input = inputs[j];
-            if(input.type == "submit")
-            {
+    // selection failed, we do not need to keep going
+    if(forms === null) return;
+    
+    for(let idx = 0; idx < forms.length; ++idx) {
+        let form = forms[idx];
+        var inputs = form.getElementsByTagName('input');
+        if(inputs === null) continue;
+        
+        for( let inputIdx = 0; inputIdx < inputs.length; ++inputIdx) {
+            var input = inputs[inputIdx];
+            
+            if(input === null || input.type === 'submit') {
                 continue;
             }
+            
             var inputName = input.name.slice();
-            input.setAttribute("data-name", inputName);
-            if(input.value.length == 0)
-            {
-                input.name = "";
+            input.setAttribute('data-name', inputName);
+            
+            if(input.value.length === 0) {
+                input.name = '';
             }
-            input.addEventListener("change", toggleInputName);
+            
+            input.addEventListener('change', toggleInputName);
         }
 
-        var selects = form.getElementsByTagName("select");
-        for(var j=0;j<selects.length;++j)
-        {
-            var select = selects[j];
+        var selects = form.getElementsByTagName('select');
+        for(let selectIdx = 0; selectIdx <selects.length; ++selectIdx) {
+            var select = selects[selectIdx];
+            if(select === null) continue;
+            
             var selectName = select.name.slice();
-            select.setAttribute("data-name", selectName);
-            select.name = "";
-            select.addEventListener("change", toggleInputName);
+            select.setAttribute('data-name', selectName);
+            select.name = '';
+            select.addEventListener('change', toggleInputName);
         }
     }
 };
 
-var toggleInputName = function()
-{
-    if(this.value.length > 0)
-    {
-        this.name = this.getAttribute("data-name");
+var toggleInputName = function() {
+    if(this.value.length > 0) {
+        this.name = this.getAttribute('data-name');
     }
-    else
-    {
-        this.name = "";
+    else {
+        this.name = '';
     }
 }
