@@ -2,9 +2,9 @@
 
 ## What is this?
 
-This is a script that makes it so your form doesn't submit the fields that are empty. 
+This is a script that makes it so your Form doesn't submit the empty fields.
 
-Useful for filter forms if you have many fields but want the url to remain readable.
+Useful for filter forms when you have several fields but want the URL to remain readable.
 
 ## Usage
 
@@ -15,7 +15,9 @@ Useful for filter forms if you have many fields but want the url to remain reada
     skipEmptyFieldsSubmission("skipFieldsFormClassName");
 ```
 
-- In this call `skipFieldsFormClassName` can be whatever class name you assign to your form. This parameter is not optional.
+- In this call the paremeter `skipFieldsFormClassName` will be the class name you assigned to your Form. 
+
+> Important: This parameter is not optional.
 
 ## Visual aids
 
